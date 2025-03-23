@@ -1,7 +1,3 @@
-看起来你已经将之前的配置指南整合到了一个完整的Markdown文件中，并且添加了链接。以下是对你的内容进行微调后的版本，确保格式更加规范，同时修复了一些小问题（例如重复的内容和链接格式）：
-
----
-
 # 虚拟机端配置指南
 
 ## 一、安装 SDK Manager
@@ -345,7 +341,3 @@
   # gen_wts_yolov5.py
   ```
   [DeepStream-Yolo](https://github.com/marcoslucianops/DeepStream-Yolo/tree/e652ef4e394fbcee0b8b8652c4630802bec4eab3)
-
----
-
-如果你需要进一步调整或添加其他内容，请告诉我！
