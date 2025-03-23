@@ -1,3 +1,7 @@
+看起来你已经将之前的配置指南整合到了一个完整的Markdown文件中，并且添加了链接。以下是对你的内容进行微调后的版本，确保格式更加规范，同时修复了一些小问题（例如重复的内容和链接格式）：
+
+---
+
 # 虚拟机端配置指南
 
 ## 一、安装 SDK Manager
@@ -9,7 +13,8 @@
   sudo dpkg -i sdkmanager*
   ```
 
-# Jetson端配置指南
+# Jetson 端配置指南
+
 ## 一、M.2 挂载
 
 - 如果板卡上的 eMMC 比较小，推荐外接一个 SSD。
@@ -20,7 +25,7 @@
   sudo fdisk -l
   ```
 
-## 三、rootOnNVMe
+## 二、rootOnNVMe
 
 - 将 SD 卡转存到 SSD，并以 SSD 启动系统：
   ```bash
@@ -32,14 +37,14 @@
   df -h
   ```
 
-## 四、fishros
+## 三、fishros
 
 - 安装 fishros：
   ```bash
   wget http://fishros.com/install -O fishros && . fishros
   ```
 
-## 五、pip
+## 四、pip
 
 - 检查 Python 版本：
   ```bash
@@ -56,7 +61,7 @@
   # sudo pip3 install pip==21.3.1
   ```
 
-## 六、jtop
+## 五、jtop
 
 - jtop 是 Jetson 系列设备最佳设备状态监控软件，可以实时查看 CPU、GPU、内存等硬件设备使用情况，开发环境配置情况，同时可以直接在图形化界面设置运行功率和风扇转速。
 - 安装步骤：
@@ -67,7 +72,7 @@
   jtop
   ```
 
-## 七、输入法
+## 六、输入法
 
 - 安装输入法：
   ```bash
@@ -77,7 +82,7 @@
   ibus-setup
   ```
 
-## 八、摄像头
+## 七、摄像头
 
 - 安装 v4l-utils：
   ```bash
@@ -89,7 +94,7 @@
   v4l2-ctl --device=/dev/video0 --list-formats-ext
   ```
 
-## 九、swap
+## 八、swap
 
 - 新增 swapfile 文件大小自定义（6G）：
   ```bash
@@ -112,7 +117,7 @@
   sudo bash -c 'echo "/var/swapfile swap swap defaults 0 0" >> /etc/fstab'
   ```
 
-## 十、VNC
+## 九、VNC
 
 - 安装 VNC：
   ```bash
@@ -172,7 +177,7 @@
   NoDisplay=true
   ```
 
-## 十一、Jupyter-lab
+## 十、Jupyter-lab
 
 ### 1. 安装
 
@@ -257,7 +262,7 @@
   ```
 - 等待重启完成，在同局域网下，通过浏览器访问 Ubuntu：`ip:端口号/lab`
 
-## 十二、Deepstream-YOLO
+## 十一、Deepstream-YOLO
 
 ### 1. PyTorch
 
@@ -340,4 +345,7 @@
   # gen_wts_yolov5.py
   ```
   [DeepStream-Yolo](https://github.com/marcoslucianops/DeepStream-Yolo/tree/e652ef4e394fbcee0b8b8652c4630802bec4eab3)
-```
+
+---
+
+如果你需要进一步调整或添加其他内容，请告诉我！
