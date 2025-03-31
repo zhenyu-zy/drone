@@ -5,39 +5,31 @@
 ### 一、NVIDIA 驱动安装与更新
 
 1. **查看显卡版本**  
-   首先查看电脑的显卡版本。 
-
-   <img src="./alt/1.png" alt="电脑的显卡版本" width="640" height="480">
-
-   如果已有显卡驱动，可以直接在桌面右键，找到英伟达驱动控制面板打开。
-
-   <img src="./alt/2.png" alt="英伟达驱动控制面板" width="640" height="480">
-
-   显卡驱动的下载地址：[NVIDIA GeForce 驱动程序](https://www.nvidia.com/Download/index.aspx)
-
-   <img src="./alt/3.png" alt="NVIDIA GeForce 驱动程序下载地址" width="640" height="480">
-
-
-
+   首先查看电脑的显卡版本。  
+   ![电脑的显卡版本](./alt/1.png)  
+   如果已有显卡驱动，可以直接在桌面右键，找到英伟达驱动控制面板打开。  
+   ![英伟达驱动控制面板](./alt/2.png)  
+   显卡驱动的下载地址：[NVIDIA GeForce 驱动程序](https://www.nvidia.com/Download/index.aspx)  
+   ![NVIDIA GeForce 驱动程序下载地址](./alt/3.png)
 
 2. **检查驱动版本**  
    安装（更新）好显卡驱动后，按下 `Win + R` 组合键，打开命令窗口，输入以下命令：
    ```bash
    nvidia-smi
    ```
-   例如，可以看到驱动版本为 `555.99`，最高支持的 CUDA 版本为 `12.5`。
-
-   <img src="./alt/4.png" alt="nvidia-smi" width="640" height="480">
+   例如，可以看到驱动版本为 `555.99`，最高支持的 CUDA 版本为 `12.5`。  
+   ![nvidia-smi](./alt/4.png)
 
 ### 二、安装 CUDA 和 cuDNN
 
 1. **下载 CUDA Toolkit**  
-   下载地址：[CUDA Toolkit 12.8 Update 1](https://developer.nvidia.com/cuda-downloads)
-   <img src="./alt/5.png" alt="nvidia-smi" width="640" height="480">
+   下载地址：[CUDA Toolkit 12.8 Update 1](https://developer.nvidia.com/cuda-downloads)  
+   ![CUDA Toolkit 下载](./alt/5.png)
 
 2. **下载 cuDNN**  
-   下载地址：[cuDNN 9.2.1](https://developer.nvidia.com/cudnn)
-   <img src="./alt/6.png" alt="nvidia-smi" width="640" height="480">
+   下载地址：[cuDNN 9.2.1](https://developer.nvidia.com/cudnn)  
+   ![cuDNN 下载](./alt/6.png)  
+   将 zip 文件解压。
 
 ### 三、Anaconda 的安装
 
@@ -46,7 +38,7 @@
 
 2. **安装步骤**  
    - 下载安装程序并运行。
-   - 按照提示完成安装。(安装在默认路径)
+   - 按照提示完成安装（安装在默认路径）。
 
 ### 四、PyTorch 环境安装
 
@@ -69,11 +61,13 @@
    conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
    conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/
    conda config --set show_channel_urls yes
-
-   #查看源
+   ```
+   查看源：
+   ```bash
    conda config --show
-
-   恢复默认源
+   ```
+   恢复默认源：
+   ```bash
    conda config --remove-key channels
    ```
 
@@ -86,7 +80,6 @@
    ```bash
    conda install pytorch torchvision torchaudio pytorch-cuda=12.1
    ```
-
 
 5. **测试 PyTorch**  
    在 Python 中运行以下代码测试 PyTorch、CUDA 和 cuDNN 是否正常工作：
@@ -104,7 +97,7 @@
    官网下载地址：[JetBrains PyCharm](https://www.jetbrains.com/pycharm/download/)
 
 2. **安装步骤**  
-   - 下载安装PyCharm Community Edition并运行。(安装在默认路径)
+   - 下载安装 PyCharm Community Edition 并运行（安装在默认路径）。
    - 按照提示完成安装。
 
 ### 六、LabelImg 安装及使用
@@ -393,7 +386,240 @@
   ```
 - 等待重启完成，在同局域网下，通过浏览器访问 Ubuntu：`ip:端口号/lab`
 
-### 十一、Deepstream-YOLO
+### 十一、其他工具安装
+
+#### 1. NoMachine
+
+- **ARMv8**  
+  下载地址：[NoMachine ARMv8](https://downloads.nomachine.com/linux/?distro=Arm&id=30)  
+  安装命令：
+  ```bash
+  sudo dpkg -i nomachine*
+  ```
+
+#### 2. ToDesk
+
+- **ARM64 & aarch64**  
+  下载地址：[ToDesk Linux 版](https://www.todesk.com/linux.html)  
+  安装命令：
+  ```bash
+  sudo apt-get install libappindicator3-1
+  sudo apt-get install ./todesk*
+  ```
+
+### 十二、无人机相关配置
+
+#### 1. MAVROS
+
+- MAVROS 是一层 MAVLink 与 ROS 通信的封装，旨在方便无人机与机载电脑通信。
+  ```bash
+  sudo apt-get install ros-noetic-mavros-*
+  sudo apt-get install ros-noetic-serial
+  cd /opt/ros/noetic/lib/mavros
+  sudo ./install_geographiclib_datasets.sh
+  ```
+
+- 修改 launch 文件：
+  ```bash
+  sudo chmod 777 /opt/ros/noetic/share/mavros/launch/px4.launch
+  sudo gedit /opt/ros/noetic/share/mavros/launch/px4.launch
+  ```
+  将其中的：
+  ```xml
+  <arg name="fcu_url" default="/dev/ttyACM0:57600" />
+  ```
+  修改为：
+  ```xml
+  <arg name="fcu_url" default="/dev/ttyACM0:921600" />
+  ```
+
+- 插上飞控查看 MAVROS 对应的串口号：
+  ```bash
+  ls /dev/tty*
+  ```
+  给予相应的权限：
+  ```bash
+  sudo chmod 777 /dev/ttyACM0
+  ```
+  启动 MAVROS：
+  ```bash
+  roslaunch mavros px4.launch
+  ```
+
+#### 2. RealSense
+
+- 安装依赖：
+  ```bash
+  sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key F6E65AC044F831AC80A06380C8B3A55A6F3EFCDE || sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-key F6E65AC044F831AC80A06380C8B3A55A6F3EFCDE
+  sudo add-apt-repository "deb https://librealsense.intel.com/Debian/apt-repo $(lsb_release -cs) main" -u
+  sudo apt-get install librealsense2-dkms
+  sudo apt-get install librealsense2-utils
+  sudo apt-get install librealsense2-dev
+  sudo apt-get install librealsense2-dbg
+  ```
+- 测试 RealSense：
+  ```bash
+  realsense-viewer
+  ```
+  注意：测试时左上角显示的 USB 必须是 3.x，如果是 2.x，可能是 USB 线是 2.0 的，或者插在了 2.0 的 USB 口上（3.0 的线和口都是蓝色的）。
+
+#### 3. RealSense-ROS
+
+- 安装：
+  ```bash
+  mkdir -p realsense_ws/src
+  cd realsense_ws/src
+  git clone -b ros1-legacy https://github.com/IntelRealSense/realsense-ros.git
+  git clone https://github.com/pal-robotics/ddynamic_reconfigure.git
+  cd ..
+  mkdir build
+  cd build
+  cmake ..
+  sudo make -j4
+  sudo make install
+  sudo apt-get install ros-noetic-ddynamic-reconfigure
+  ```
+
+- 添加环境依赖：
+  ```bash
+  echo "source ~/realsense_ws/devel/setup.bash" >> ~/.bashrc
+  source ~/.bashrc
+  ```
+
+- 测试安装是否成功：
+  ```bash
+  roslaunch realsense2_camera demo_pointcloud.launch
+  ```
+
+#### 4. Ego-Planner
+
+- 克隆项目：
+  ```bash
+  git clone https://github.com/ZJU-FAST-Lab/Fast-Drone-250
+  cd Fast-Drone-250
+  unzip 3rd_party.zip
+  ```
+
+- 安装依赖：
+  ```bash
+  cd glog
+  sudo chmod 777 *
+  ./autogen.sh && ./configure && make && sudo make install
+  sudo apt-get install liblapack-dev libsuitesparse-dev libcxsparse3 libgflags-dev libgoogle-glog-dev libgtest-dev
+  cd ..
+  ```
+
+- 编译 Ceres Solver：
+  ```bash
+  sudo mv ceres-solver-2.0.0rc1 ceres
+  cd ceres
+  mkdir build
+  cd build
+  cmake ..
+  sudo make -j4
+  sudo make install
+  cd ..
+  ```
+
+- 编译工作空间：
+  ```bash
+  catkin_make
+  source devel/setup.bash
+  roslaunch ego_planner single_run_in_sim.launch
+  ```
+
+- 更改 IMU 话题频率（非常重要，如果没更改会导致 VINS 发散）：
+  - 进入到工作空间下 `shfiles` 文件夹，打开 `rspx4.sh`，在 `roslaunch mavros px4.launch` 之后的 `& sleep` 改成 `10`（等待 10 秒，给启动节点预留足够时间），然后后面添加两行：
+    ```bash
+    rosrun mavros mavcmd long 511 105 4000 0 0 0 0 0 & sleep 3
+    rosrun mavros mavcmd long 511 31 4000 0 0 0 0 0 & sleep 3
+    ```
+
+#### 5. ROS 分布式通信
+
+- 安装依赖：
+  ```bash
+  sudo apt install net-tools
+  ```
+
+- 配置主机和从机的 IP 地址（以 OrangePi 为例）：
+
+  - 在 OrangePi 和虚拟机终端上：
+    ```bash
+    ifconfig  # 查看 IP
+    hostname  # 查看计算机名称
+    ```
+
+  - 在 OrangePi 上：
+    ```bash
+    ping 192.168.**.**
+    sudo gedit /etc/hosts
+    ```
+    如果没有 `gedit`，请在文件管理器中找到该文件，然后运行以下命令：
+    ```bash
+    sudo chmod 777 hosts
+    ```
+    添加一行：
+    ```plaintext
+    192.168.**.** 虚拟机用户名
+    ```
+    测试：
+    ```bash
+    ping 虚拟机用户名
+    ```
+
+  - 在虚拟机上：
+    ```bash
+    ping 192.168.**.**  # 测试 OrangePi
+    sudo vim /etc/hosts
+    ```
+    添加一行：
+    ```plaintext
+    192.168.**.** orangepi
+    ```
+    测试：
+    ```bash
+    ping orangepi
+    ```
+
+- 配置主机的 IP 地址：
+  - 在 OrangePi 端：
+    ```bash
+    sudo vim ~/.bashrc
+    ```
+    在最后一行加入以下代码：
+    ```bash
+    export ROS_MASTER_URI=http://主机IP:11311
+    export ROS_HOSTNAME=主机IP
+    ```
+    保存并退出：
+    ```bash
+    :wq
+    ```
+    应用更改：
+    ```bash
+    source ~/.bashrc
+    ```
+
+  - 在虚拟机端：
+    ```bash
+    sudo vim ~/.bashrc
+    ```
+    在最后一行加入以下代码：
+    ```bash
+    export ROS_MASTER_URI=http://主机IP:11311
+    export ROS_HOSTNAME=从机IP
+    ```
+    保存并退出：
+    ```bash
+    :wq
+    ```
+    应用更改：
+    ```bash
+    source ~/.bashrc
+    ```
+
+### 十三、Deepstream-YOLO
 
 #### 1. PyTorch
 
@@ -425,7 +651,7 @@
 
 - 使用清华源安装 Python 包：
   ```bash
-  # pip install numpy -i https://pypi.tuna.tsinghua.edu.cn/simple
+  pip install numpy -i https://pypi.tuna.tsinghua.edu.cn/simple
   ```
 
 #### 4. YOLOv5 (v6.2)
@@ -513,4 +739,3 @@
   [primary-gie]
   config-file=config_infer_primary_yoloV5.txt
   ```
-
