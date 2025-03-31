@@ -1,6 +1,116 @@
-# 虚拟机端配置指南
+# 配置指南
 
-## 一、安装 SDK Manager
+## Windows 端配置指南
+
+### 一、NVIDIA 驱动安装与更新
+
+1. **查看显卡版本**  
+   首先查看电脑的显卡版本。  
+   如果已有显卡驱动，可以直接在桌面右键，找到英伟达驱动控制面板打开。  
+   显卡驱动的下载地址：[NVIDIA GeForce 驱动程序](https://www.nvidia.com/Download/index.aspx)
+
+2. **检查驱动版本**  
+   安装（更新）好显卡驱动后，按下 `Win + R` 组合键，打开命令窗口，输入以下命令：
+   ```bash
+   nvidia-smi
+   ```
+   例如，可以看到驱动版本为 `555.99`，最高支持的 CUDA 版本为 `12.5`。
+
+### 二、安装 CUDA 和 cuDNN
+
+1. **下载 CUDA Toolkit**  
+   下载地址：[CUDA Toolkit 12.8 Update 1](https://developer.nvidia.com/cuda-downloads)
+
+2. **下载 cuDNN**  
+   下载地址：[cuDNN 9.2.1](https://developer.nvidia.com/cudnn)
+
+### 三、Anaconda 的安装
+
+1. **下载 Anaconda**  
+   官网下载地址：[Anaconda Distribution](https://www.anaconda.com/products/individual)
+
+2. **安装步骤**  
+   - 下载安装程序并运行。
+   - 按照提示完成安装。
+
+### 四、PyTorch 环境安装
+
+1. **创建虚拟环境**  
+   打开 Anaconda 终端，创建虚拟环境：
+   ```bash
+   conda create -n yolov5 python=3.8
+   ```
+   此处虚拟环境名为 `yolov5`，Python 版本为 `3.8`。
+
+2. **激活虚拟环境**  
+   ```bash
+   conda activate yolov5
+   ```
+
+3. **配置清华源（可选）**  
+   如果需要加速下载，可以将 Anaconda 源切换为清华源：
+   ```bash
+   conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+   conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
+   conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/
+   conda config --set show_channel_urls yes
+   ```
+
+4. **安装 PyTorch**  
+   根据显卡支持的 CUDA 版本（如 CUDA 12.1），安装 PyTorch：
+   ```bash
+   conda install pytorch torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvidia
+   ```
+   如果使用国内源：
+   ```bash
+   conda install pytorch torchvision torchaudio pytorch-cuda=12.1
+   ```
+
+5. **测试 PyTorch**  
+   在 Python 中运行以下代码测试 PyTorch、CUDA 和 cuDNN 是否正常工作：
+   ```python
+   import torch
+   print(torch.cuda.is_available())
+   print(torch.backends.cudnn.is_available())
+   print(torch.cuda_version)
+   print(torch.backends.cudnn.version())
+   ```
+
+### 五、PyCharm 安装
+
+1. **下载 PyCharm**  
+   官网下载地址：[JetBrains PyCharm](https://www.jetbrains.com/pycharm/download/)
+
+2. **安装步骤**  
+   - 下载安装程序并运行。
+   - 按照提示完成安装。
+
+### 六、LabelImg 安装及使用
+
+1. **安装 LabelImg**  
+   使用以下命令安装：
+   ```bash
+   pip install labelimg -i https://pypi.tuna.tsinghua.edu.cn/simple
+   ```
+
+### 七、项目克隆和环境依赖安装
+
+1. **YOLOv5 项目**  
+   - 克隆仓库：
+     ```bash
+     git clone https://github.com/ultralytics/yolov5.git
+     ```
+   - 安装依赖：
+     ```bash
+     cd yolov5
+     pip install -r requirements.txt
+     ```
+
+---
+
+## 虚拟机端配置指南
+
+### 一、安装 SDK Manager
 
 - 使用虚拟机 Ubuntu 18.04 系统，下载 SDK Manager。
 - 使用前请先注册/登录 NVIDIA 账号。
@@ -9,9 +119,11 @@
   sudo dpkg -i sdkmanager*
   ```
 
-# Jetson 端配置指南
+---
 
-## 一、M.2 挂载
+## Jetson 端配置指南
+
+### 一、M.2 挂载
 
 - 如果板卡上的 eMMC 比较小，推荐外接一个 SSD。
 - 部分板卡没有 eMMC，用的是 SD 卡，如果 SD 卡够用则不需要使用 SSD。
@@ -21,7 +133,7 @@
   sudo fdisk -l
   ```
 
-## 二、rootOnNVMe
+### 二、rootOnNVMe
 
 - 将 SD 卡转存到 SSD，并以 SSD 启动系统：
   ```bash
@@ -33,14 +145,14 @@
   df -h
   ```
 
-## 三、fishros
+### 三、fishros
 
 - 安装 fishros：
   ```bash
   wget http://fishros.com/install -O fishros && . fishros
   ```
 
-## 四、pip
+### 四、pip
 
 - 检查 Python 版本：
   ```bash
@@ -57,7 +169,7 @@
   # sudo pip3 install pip==21.3.1
   ```
 
-## 五、jtop
+### 五、jtop
 
 - jtop 是 Jetson 系列设备最佳设备状态监控软件，可以实时查看 CPU、GPU、内存等硬件设备使用情况，开发环境配置情况，同时可以直接在图形化界面设置运行功率和风扇转速。
 - 安装步骤：
@@ -68,7 +180,7 @@
   jtop
   ```
 
-## 六、输入法
+### 六、输入法
 
 - 安装输入法：
   ```bash
@@ -78,7 +190,7 @@
   ibus-setup
   ```
 
-## 七、摄像头
+### 七、摄像头
 
 - 安装 v4l-utils：
   ```bash
@@ -90,7 +202,7 @@
   v4l2-ctl --device=/dev/video0 --list-formats-ext
   ```
 
-## 八、swap
+### 八、swap
 
 - 新增 swapfile 文件大小自定义（6G）：
   ```bash
@@ -113,7 +225,7 @@
   sudo bash -c 'echo "/var/swapfile swap swap defaults 0 0" >> /etc/fstab'
   ```
 
-## 九、VNC
+### 九、VNC
 
 - 安装 VNC：
   ```bash
@@ -173,9 +285,9 @@
   NoDisplay=true
   ```
 
-## 十、Jupyter-lab
+### 十、Jupyter-lab
 
-### 1. 安装
+#### 1. 安装
 
 - 安装依赖：
   ```bash
@@ -184,14 +296,14 @@
   sudo pip3 install jupyter jupyterlab
   ```
 
-### 2. 生成配置文件
+#### 2. 生成配置文件
 
 - 生成配置文件：
   ```bash
   jupyter notebook --generate-config
   ```
 
-### 3. 修改配置文件
+#### 3. 修改配置文件
 
 - 修改配置文件：
   ```bash
@@ -205,21 +317,21 @@
   c.NotebookApp.notebook_dir = '/home/'  # 第392行，可以访问的目录
   ```
 
-### 4. 设置访问密码
+#### 4. 设置访问密码
 
 - 设置密码：
   ```bash
   jupyter notebook password
   ```
 
-### 5. 启动 Jupyter Notebook
+#### 5. 启动 Jupyter Notebook
 
 - 启动 Jupyter Notebook：
   ```bash
   jupyter notebook
   ```
 
-### 6. 开机自启动
+#### 6. 开机自启动
 
 - 查找 Jupyter-lab 安装位置：
   ```bash
@@ -258,9 +370,9 @@
   ```
 - 等待重启完成，在同局域网下，通过浏览器访问 Ubuntu：`ip:端口号/lab`
 
-## 十一、Deepstream-YOLO
+### 十一、Deepstream-YOLO
 
-### 1. PyTorch
+#### 1. PyTorch
 
 - 安装依赖：
   ```bash
@@ -271,7 +383,7 @@
   pip3 install torch-1.8.0-cp36-cp36m-linux_aarch64.whl
   ```
 
-### 2. torchvision (v0.9.0)
+#### 2. torchvision (v0.9.0)
 
 - 安装依赖：
   ```bash
@@ -286,14 +398,14 @@
   python3 setup.py install --user
   ```
 
-### 3. 清华源
+#### 3. 清华源
 
 - 使用清华源安装 Python 包：
   ```bash
   # pip install numpy -i https://pypi.tuna.tsinghua.edu.cn/simple
   ```
 
-### 4. YOLOv5 (v6.2)
+#### 4. YOLOv5 (v6.2)
 
 - 安装依赖：
   ```bash
@@ -306,7 +418,7 @@
   pip install -r requirements.txt
   ```
 
-### 5. TensorRTX (YOLOv5 v6.2)
+#### 5. TensorRTX (YOLOv5 v6.2)
 
 - 克隆并编译：
   ```bash
@@ -319,7 +431,7 @@
   # 修改 yololar.h 中的 class_num
   ```
 
-### 6. torchvision (v0.9.0)
+#### 6. torchvision (v0.9.0)
 
 - 安装依赖：
   ```bash
@@ -334,10 +446,48 @@
   python3 setup.py install --user
   ```
 
-### 7. Deepstream 6.0.1
+#### 7. Deepstream 6.0.1
 
-- 使用脚本生成权重文件：
+- **第一种**：用 TensorRT 转换 wts 和 cfg，使用这个版本的 DeepStream-YOLO  
+  使用脚本生成权重文件：
   ```bash
   # gen_wts_yolov5.py
   ```
   [DeepStream-Yolo](https://github.com/marcoslucianops/DeepStream-Yolo/tree/e652ef4e394fbcee0b8b8652c4630802bec4eab3)
+
+- **第二种**：使用 ONNX  
+  克隆仓库：
+  ```bash
+  git clone https://github.com/marcoslucianops/DeepStream-Yolo.git
+  ```
+  配置文件：`config_infer_primary_yoloV5.txt`  
+  ONNX 模型文件：
+  ```ini
+  onnx-file=yolov5s.onnx
+  ```
+  生成的引擎文件：
+  ```ini
+  model-engine-file=model_b1_gpu0_fp32.engine
+  ```
+  标签文件：
+  ```ini
+  labelfile-path=labels.txt
+  ```
+  置信度：
+  ```ini
+  pre-cluster-threshold=0.25
+  ```
+  配置文件：`deepstream_app_config.txt`
+  ```ini
+  [source0]
+  enable=1
+  type=3
+  uri=file:///opt/nvidia/deepstream/deepstream/samples/streams/sample_1080p_h264.mp4
+  num-sources=1
+  gpu-id=0
+  cudadec-memtype=0
+
+  [primary-gie]
+  config-file=config_infer_primary_yoloV5.txt
+  ```
+
