@@ -69,6 +69,12 @@
    conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
    conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/
    conda config --set show_channel_urls yes
+
+   #查看源
+   conda config --show
+
+   恢复默认源
+   conda config --remove-key channels
    ```
 
 4. **安装 PyTorch**  
@@ -98,7 +104,7 @@
    官网下载地址：[JetBrains PyCharm](https://www.jetbrains.com/pycharm/download/)
 
 2. **安装步骤**  
-   - 下载安装程序并运行。
+   - 下载安装PyCharm Community Edition并运行。(安装在默认路径)
    - 按照提示完成安装。
 
 ### 六、LabelImg 安装及使用
@@ -119,6 +125,7 @@
    - 安装依赖：
      ```bash
      cd yolov5
+     pip install numpy==1.23.5 pillow==9.5
      pip install -r requirements.txt
      ```
 
@@ -128,7 +135,7 @@
 
 ### 一、安装 SDK Manager
 
-- 使用虚拟机 Ubuntu 18.04 系统，下载 SDK Manager。
+- 使用虚拟机 Ubuntu 18.04/20.04 系统，下载 SDK Manager。
 - 使用前请先注册/登录 NVIDIA 账号。
 - 下载的 `.deb` 文件：
   ```bash
