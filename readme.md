@@ -7,15 +7,15 @@
 1. **查看显卡版本**  
    首先查看电脑的显卡版本。 
 
-   <img src="1.png" alt="电脑的显卡版本" width="640" height="480">
+   <img src="./alt/1.png" alt="电脑的显卡版本" width="640" height="480">
 
    如果已有显卡驱动，可以直接在桌面右键，找到英伟达驱动控制面板打开。
 
-   <img src="2.png" alt="英伟达驱动控制面板" width="640" height="480">
+   <img src="./alt/2.png" alt="英伟达驱动控制面板" width="640" height="480">
 
    显卡驱动的下载地址：[NVIDIA GeForce 驱动程序](https://www.nvidia.com/Download/index.aspx)
 
-   <img src="3.png" alt="NVIDIA GeForce 驱动程序下载地址" width="640" height="480">
+   <img src="./alt/3.png" alt="NVIDIA GeForce 驱动程序下载地址" width="640" height="480">
 
 
 
@@ -27,15 +27,17 @@
    ```
    例如，可以看到驱动版本为 `555.99`，最高支持的 CUDA 版本为 `12.5`。
 
-   <img src="4.png" alt="nvidia-smi" width="640" height="480">
+   <img src="./alt/4.png" alt="nvidia-smi" width="640" height="480">
 
 ### 二、安装 CUDA 和 cuDNN
 
 1. **下载 CUDA Toolkit**  
    下载地址：[CUDA Toolkit 12.8 Update 1](https://developer.nvidia.com/cuda-downloads)
+   <img src="./alt/5.png" alt="nvidia-smi" width="640" height="480">
 
 2. **下载 cuDNN**  
    下载地址：[cuDNN 9.2.1](https://developer.nvidia.com/cudnn)
+   <img src="./alt/6.png" alt="nvidia-smi" width="640" height="480">
 
 ### 三、Anaconda 的安装
 
@@ -44,7 +46,7 @@
 
 2. **安装步骤**  
    - 下载安装程序并运行。
-   - 按照提示完成安装。
+   - 按照提示完成安装。(安装在默认路径)
 
 ### 四、PyTorch 环境安装
 
@@ -72,12 +74,13 @@
 4. **安装 PyTorch**  
    根据显卡支持的 CUDA 版本（如 CUDA 12.1），安装 PyTorch：
    ```bash
-   conda install pytorch torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvidia
+   conda install pytorch==2.3.1 torchvision==0.18.1 torchaudio==2.3.1 pytorch-cuda=12.1 -c pytorch -c nvidia
    ```
-   如果使用国内源：
+   如果可以尝试使用国内源：
    ```bash
    conda install pytorch torchvision torchaudio pytorch-cuda=12.1
    ```
+
 
 5. **测试 PyTorch**  
    在 Python 中运行以下代码测试 PyTorch、CUDA 和 cuDNN 是否正常工作：
