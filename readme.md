@@ -7,10 +7,18 @@
 1. **查看显卡版本**  
    首先查看电脑的显卡版本。 
 
-   <img src="1.png" alt="描述" width="640" height="480">
+   <img src="1.png" alt="电脑的显卡版本" width="640" height="480">
 
-   如果已有显卡驱动，可以直接在桌面右键，找到英伟达驱动控制面板打开。  
+   如果已有显卡驱动，可以直接在桌面右键，找到英伟达驱动控制面板打开。
+
+   <img src="2.png" alt="英伟达驱动控制面板" width="640" height="480">
+
    显卡驱动的下载地址：[NVIDIA GeForce 驱动程序](https://www.nvidia.com/Download/index.aspx)
+
+   <img src="3.png" alt="NVIDIA GeForce 驱动程序下载地址" width="640" height="480">
+
+
+
 
 2. **检查驱动版本**  
    安装（更新）好显卡驱动后，按下 `Win + R` 组合键，打开命令窗口，输入以下命令：
@@ -18,6 +26,8 @@
    nvidia-smi
    ```
    例如，可以看到驱动版本为 `555.99`，最高支持的 CUDA 版本为 `12.5`。
+
+   <img src="4.png" alt="nvidia-smi" width="640" height="480">
 
 ### 二、安装 CUDA 和 cuDNN
 
