@@ -8,8 +8,7 @@
    首先查看电脑的显卡版本。  
    如果已有显卡驱动，可以直接在桌面右键，找到英伟达驱动控制面板打开。  
    显卡驱动的下载地址：[NVIDIA GeForce 驱动程序](https://www.nvidia.com/Download/index.aspx)
-   ![本地图片](./1.png)
-      <img src="1.png" alt="描述" width="300" height="200">
+   <img src="1.png" alt="描述" width="640" height="480">
 
 2. **检查驱动版本**  
    安装（更新）好显卡驱动后，按下 `Win + R` 组合键，打开命令窗口，输入以下命令：
