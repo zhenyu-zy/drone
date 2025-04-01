@@ -150,6 +150,28 @@
    ```bash
    pip install labelimg -i https://pypi.tuna.tsinghua.edu.cn/simple
    ```
+   安装的路径为"C:\Users\ASUS\anaconda3\Scripts\labelImg.exe"
+
+   解释如下：
+
+   ![labellmg界面介绍](./alt/labellmg1.png)
+
+   设置(标签格式为YOLO)
+
+   ![labellmg设置](./alt/labellmg2.png)
+
+   打开需要标注的图片文件夹，设置标注文件保存的目录(Change Save Dir)
+
+   ![labellmg文件夹](./alt/labellmg3.png)
+
+   开始标注，画框，标记目标的label
+
+   ![labellmg文件夹](./alt/labellmg4.png)
+
+   labelimg的快捷键
+   ![labellmg文件夹](./alt/labellmg5.png)
+
+
 
 ### 七、项目克隆和环境依赖安装
 
