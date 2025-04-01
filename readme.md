@@ -508,30 +508,35 @@
 
 #### 3. RealSense-ROS
 
+- 在已经建立好的工作空间中加入RealSense-ROS
 - 安装：
   ```bash
-  mkdir -p realsense_ws/src
-  cd realsense_ws/src
+  cd src
   git clone -b ros1-legacy https://github.com/IntelRealSense/realsense-ros.git
   git clone https://github.com/pal-robotics/ddynamic_reconfigure.git
   cd ..
-  mkdir build
-  cd build
-  cmake ..
-  sudo make -j4
+  catkin_make
   sudo make install
   sudo apt-get install ros-noetic-ddynamic-reconfigure
+  sudo apt-get install ros-noetic-rgbd-launch
+  sudo apt-get install ros-noetic-realsense2-camera-*
+
   ```
 
 - 添加环境依赖：
   ```bash
-  echo "source ~/realsense_ws/devel/setup.bash" >> ~/.bashrc
+  echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc
   source ~/.bashrc
   ```
 
 - 测试安装是否成功：
   ```bash
   roslaunch realsense2_camera demo_pointcloud.launch
+  ```
+
+- 查看发布的topic
+  ```bash
+  rostopic list
   ```
 
 #### 4. Ego-Planner
