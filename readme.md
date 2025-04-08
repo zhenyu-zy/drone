@@ -514,10 +514,15 @@
 
 #### 2. RealSense
 
-- 安装依赖：
+- 安装依赖(jetson)：
   ```bash
-  sudo chmod +x ./libuvc_installation.sh
-  ./libuvc_installation.sh
+  sudo chmod +x ./libuvc_installation_jetson.sh
+  ./libuvc_installation_jetson.sh
+  ```
+- 安装依赖(orangepi5max/ultra-RK3588)：
+  ```bash
+  sudo chmod +x ./libuvc_installation_rk3588.sh
+  ./libuvc_installation_rk3588.sh
   ```
 - 测试 RealSense：
   ```bash
