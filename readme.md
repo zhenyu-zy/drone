@@ -810,3 +810,5 @@
   [primary-gie]
   config-file=config_infer_primary_yoloV5.txt
   ```
+
+#### 8. Deepstream-python

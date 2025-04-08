@@ -48,5 +48,4 @@ if [ -d "/sys/block" ]; then
         fi
     done
 fi
-
 echo "RK3588 现已运行在最高性能模式 🚀"
