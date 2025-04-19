@@ -31,6 +31,7 @@
    - [RealSense-ROS](#3-realsense-ros)
    - [Ego-Planner](#4-ego-planner)
    - [ROS 分布式通信](#5-ros-分布式通信)
+   - [livox](#6-livox)
 6. [Deepstream-YOLO](#十三-deepstream-yolo)
    - [PyTorch](#1-pytorch)
    - [torchvision (v0.9.0)](#2-torchvision-v090)
@@ -38,15 +39,13 @@
    - [YOLOv5 (v6.2)](#4-yolov5-v62)
    - [TensorRTX (YOLOv5 v6.2)](#5-tensorrtx-yolov5-v62)
    - [Deepstream 6.0.1](#6-deepstream-601)
+   - [Deepstream-python](#7-deepstream-python)
 
 ---
-
-
 
 ## Windows 端配置指南
 
 ### 一、NVIDIA 驱动安装与更新
-
 1. **查看显卡版本**  
    首先查看电脑的显卡版本。  
    ![电脑的显卡版本](./alt/1.png)  
@@ -64,7 +63,6 @@
    ![nvidia-smi](./alt/4.png)
 
 ### 二、安装 CUDA 和 cuDNN
-
 1. **下载 CUDA Toolkit**  
    下载地址：[CUDA Toolkit 12.8 Update 1](https://developer.nvidia.com/cuda-downloads)  
    ![CUDA Toolkit 下载](./alt/5.png)
@@ -75,7 +73,6 @@
    将 zip 文件解压。
 
 ### 三、Anaconda 的安装
-
 1. **下载 Anaconda**  
    官网下载地址：[Anaconda Distribution](https://www.anaconda.com/products/individual)
 
@@ -84,7 +81,6 @@
    - 按照提示完成安装（安装在默认路径）。
 
 ### 四、PyTorch 环境安装
-
 1. **创建虚拟环境**  
    打开 Anaconda 终端，创建虚拟环境：
    ```bash
@@ -135,7 +131,6 @@
    ```
 
 ### 五、PyCharm 安装
-
 1. **下载 PyCharm**  
    官网下载地址：[JetBrains PyCharm](https://www.jetbrains.com/pycharm/download/)
 
@@ -144,7 +139,6 @@
    - 按照提示完成安装。
 
 ### 六、LabelImg 安装及使用
-
 1. **安装 LabelImg**  
    使用以下命令安装：
    ```bash
@@ -152,30 +146,22 @@
    ```
    安装的路径为"C:\Users\ASUS\anaconda3\Scripts\labelImg.exe"
 
-   解释如下：
+   - **界面介绍**  
+     ![LabelImg 界面介绍](./alt/labellmg1.png)
 
-   ![labellmg界面介绍](./alt/labellmg1.png)
+   - **设置（标签格式为 YOLO）**  
+     ![LabelImg 设置](./alt/labellmg2.png)
 
-   设置(标签格式为YOLO)
+   - **打开需要标注的图片文件夹，设置标注文件保存的目录 (Change Save Dir)**  
+     ![LabelImg 文件夹](./alt/labellmg3.png)
 
-   ![labellmg设置](./alt/labellmg2.png)
+   - **开始标注，画框，标记目标的 label**  
+     ![LabelImg 文件夹](./alt/labellmg4.png)
 
-   打开需要标注的图片文件夹，设置标注文件保存的目录(Change Save Dir)
-
-   ![labellmg文件夹](./alt/labellmg3.png)
-
-   开始标注，画框，标记目标的label
-
-   ![labellmg文件夹](./alt/labellmg4.png)
-
-   labelimg的快捷键
-   
-   ![labellmg文件夹](./alt/labellmg5.png)
-
-
+   - **LabelImg 的快捷键**  
+     ![LabelImg 快捷键](./alt/labellmg5.png)
 
 ### 七、项目克隆和环境依赖安装
-
 1. **YOLOv5 项目**  
    - 克隆仓库：
      ```bash
@@ -193,7 +179,6 @@
 ## 虚拟机端配置指南
 
 ### 一、安装 SDK Manager
-
 - 使用虚拟机 Ubuntu 18.04/20.04 系统，下载 SDK Manager。
 - 使用前请先注册/登录 NVIDIA 账号。
 - 下载的 `.deb` 文件：
@@ -206,7 +191,6 @@
 ## Jetson 端配置指南
 
 ### 一、M.2 挂载
-
 - 如果板卡上的 eMMC 比较小，推荐外接一个 SSD。
 - 部分板卡没有 eMMC，用的是 SD 卡，如果 SD 卡够用则不需要使用 SSD。
 - 检查挂载情况：
@@ -216,7 +200,6 @@
   ```
 
 ### 二、rootOnNVMe
-
 - 将 SD 卡转存到 SSD，并以 SSD 启动系统：
   ```bash
   git clone https://github.com/jetsonhacks/rootOnNVMe.git
@@ -228,14 +211,12 @@
   ```
 
 ### 三、fishros
-
 - 安装 fishros：
   ```bash
   wget http://fishros.com/install -O fishros && . fishros
   ```
 
 ### 四、pip
-
 - 检查 Python 版本：
   ```bash
   python3 --version
@@ -252,7 +233,6 @@
   ```
 
 ### 五、jtop
-
 - jtop 是 Jetson 系列设备最佳设备状态监控软件，可以实时查看 CPU、GPU、内存等硬件设备使用情况，开发环境配置情况，同时可以直接在图形化界面设置运行功率和风扇转速。
 - 安装步骤：
   ```bash
@@ -263,7 +243,6 @@
   ```
 
 ### 六、输入法
-
 - 安装输入法：
   ```bash
   sudo apt-get install ibus ibus-clutter ibus-gtk ibus-gtk3 ibus-qt4
@@ -273,7 +252,6 @@
   ```
 
 ### 七、摄像头
-
 - 安装 v4l-utils：
   ```bash
   sudo apt install v4l-utils
@@ -285,7 +263,6 @@
   ```
 
 ### 八、swap
-
 - 新增 swapfile 文件大小自定义（6G）：
   ```bash
   sudo fallocate -l 6G /var/swapfile
@@ -308,7 +285,6 @@
   ```
 
 ### 九、VNC
-
 - 安装 VNC：
   ```bash
   sudo apt update
@@ -368,9 +344,7 @@
   ```
 
 ### 十、Jupyter-lab
-
 #### 1. 安装
-
 - 安装依赖：
   ```bash
   sudo apt install nodejs npm
@@ -379,14 +353,12 @@
   ```
 
 #### 2. 生成配置文件
-
 - 生成配置文件：
   ```bash
   jupyter notebook --generate-config
   ```
 
 #### 3. 修改配置文件
-
 - 修改配置文件：
   ```bash
   sudo gedit ~/.jupyter/jupyter_notebook_config.py
@@ -400,21 +372,18 @@
   ```
 
 #### 4. 设置访问密码
-
 - 设置密码：
   ```bash
   jupyter notebook password
   ```
 
 #### 5. 启动 Jupyter Notebook
-
 - 启动 Jupyter Notebook：
   ```bash
   jupyter notebook
   ```
 
 #### 6. 开机自启动
-
 - 查找 Jupyter-lab 安装位置：
   ```bash
   which jupyter-lab
@@ -452,10 +421,11 @@
   ```
 - 等待重启完成，在同局域网下，通过浏览器访问 Ubuntu：`ip:端口号/lab`
 
-### 十一、其他工具安装
+---
 
-#### 1. NoMachine
+## 十一、其他工具安装
 
+### 1. NoMachine
 - **ARMv8**  
   下载地址：[NoMachine ARMv8](https://downloads.nomachine.com/linux/?distro=Arm&id=30)  
   安装命令：
@@ -463,8 +433,7 @@
   sudo dpkg -i nomachine*
   ```
 
-#### 2. ToDesk
-
+### 2. ToDesk
 - **ARM64 & aarch64**  
   下载地址：[ToDesk Linux 版](https://www.todesk.com/linux.html)  
   安装命令：
@@ -473,10 +442,11 @@
   sudo apt-get install ./todesk*
   ```
 
-### 十二、无人机相关配置
+---
 
-#### 1. MAVROS
+## 十二、无人机相关配置
 
+### 1. MAVROS
 - MAVROS 是一层 MAVLink 与 ROS 通信的封装，旨在方便无人机与机载电脑通信。
   ```bash
   sudo apt-get install ros-noetic-mavros-*
@@ -512,8 +482,7 @@
   roslaunch mavros px4.launch
   ```
 
-#### 2. RealSense
-
+### 2. RealSense
 - 安装依赖(jetson)：
   ```bash
   sudo cp /home/nx/drone/doc/d435/libuvc_installation_jetson.sh /home/nx/libuvc_installation_jetson.sh
@@ -534,9 +503,8 @@
   ```
   注意：测试时左上角显示的 USB 必须是 3.x，如果是 2.x，可能是 USB 线是 2.0 的，或者插在了 2.0 的 USB 口上（3.0 的线和口都是蓝色的）。
 
-#### 3. RealSense-ROS
-
-- 在已经建立好的工作空间中加入RealSense-ROS
+### 3. RealSense-ROS
+- 在已经建立好的工作空间中加入 RealSense-ROS
 - 安装：
   ```bash
   cd src
@@ -548,7 +516,6 @@
   sudo apt-get install ros-noetic-ddynamic-reconfigure
   sudo apt-get install ros-noetic-rgbd-launch
   sudo apt-get install ros-noetic-realsense2-camera-*
-
   ```
 
 - 添加环境依赖：
@@ -562,13 +529,12 @@
   roslaunch realsense2_camera demo_pointcloud.launch
   ```
 
-- 查看发布的topic
+- 查看发布的 topic
   ```bash
   rostopic list
   ```
 
-#### 4. Ego-Planner
-
+### 4. Ego-Planner
 - 克隆项目：
   ```bash
   git clone https://github.com/ZJU-FAST-Lab/Fast-Drone-250
@@ -611,8 +577,7 @@
     rosrun mavros mavcmd long 511 31 4000 0 0 0 0 0 & sleep 3
     ```
 
-#### 5. ROS 分布式通信
-
+### 5. ROS 分布式通信
 - 安装依赖：
   ```bash
   sudo apt install net-tools
@@ -695,9 +660,8 @@
     source ~/.bashrc
     ```
 
-#### 6. livox
-
-- 安装Livox-SDK2：
+### 6. livox
+- 安装 Livox-SDK2：
   ```bash
   git clone https://github.com/Livox-SDK/Livox-SDK2.git
   cd ./Livox-SDK2/
@@ -715,11 +679,11 @@
   ./build.sh ROS1
   ```
 
+---
 
-### 十三、Deepstream-YOLO
+## 十三、Deepstream-YOLO
 
-#### 1. PyTorch
-
+### 1. PyTorch
 - 安装依赖：
   ```bash
   sudo apt-get install python3-pip libopenblas-base libopenmpi-dev
@@ -729,8 +693,7 @@
   pip3 install torch-1.8.0-cp36-cp36m-linux_aarch64.whl
   ```
 
-#### 2. torchvision (v0.9.0)
-
+### 2. torchvision (v0.9.0)
 - 安装依赖：
   ```bash
   sudo apt-get install libjpeg-dev zlib1g-dev libpython3-dev libavcodec-dev libavformat-dev libswscale-dev
@@ -744,15 +707,13 @@
   python3 setup.py install --user
   ```
 
-#### 3. 清华源
-
+### 3. 清华源
 - 使用清华源安装 Python 包：
   ```bash
   pip install numpy -i https://pypi.tuna.tsinghua.edu.cn/simple
   ```
 
-#### 4. YOLOv5 (v6.2)
-
+### 4. YOLOv5 (v6.2)
 - 安装依赖：
   ```bash
   pip install testresources
@@ -764,8 +725,7 @@
   pip install -r requirements.txt
   ```
 
-#### 5. TensorRTX (YOLOv5 v6.2)
-
+### 5. TensorRTX (YOLOv5 v6.2)
 - 克隆并编译：
   ```bash
   git clone -b yolov5-v6.2 https://github.com/wang-xinyu/tensorrtx.git
@@ -777,23 +737,7 @@
   # 修改 yololar.h 中的 class_num
   ```
 
-#### 6. torchvision (v0.9.0)
-
-- 安装依赖：
-  ```bash
-  sudo apt-get install libjpeg-dev zlib1g-dev libpython3-dev libavcodec-dev libavformat-dev libswscale-dev
-  python3 -m pip install --upgrade pillow
-  ```
-- 克隆并安装：
-  ```bash
-  git clone --branch v0.9.0 https://github.com/pytorch/vision torchvision
-  cd torchvision
-  export BUILD_VERSION=0.9.0
-  python3 setup.py install --user
-  ```
-
-#### 7. Deepstream 6.0.1
-
+### 6. Deepstream 6.0.1
 - **第一种**：用 TensorRT 转换 wts 和 cfg，使用这个版本的 DeepStream-YOLO  
   使用脚本生成权重文件：
   ```bash
@@ -837,4 +781,5 @@
   config-file=config_infer_primary_yoloV5.txt
   ```
 
-#### 8. Deepstream-python
+### 7. Deepstream-python
+- 相关配置和安装步骤（根据实际需求补充）。
