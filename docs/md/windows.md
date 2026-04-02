@@ -104,7 +104,7 @@
    安装的路径为"C:\Users\ASUS\anaconda3\Scripts\labelImg.exe"
 
    - **界面介绍**  
-     ![LabelImg 界面介绍](../alt/labellmg1.png)
+     ![LabelImg 界面介绍](alt/labellmg1.png)
 
    - **设置（标签格式为 YOLO）**  
      ![LabelImg 设置](../alt/labellmg2.png)
