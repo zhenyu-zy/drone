@@ -3,11 +3,11 @@
 ### 一、NVIDIA 驱动安装与更新
 1. **查看显卡版本**  
    首先查看电脑的显卡版本。  
-   ![电脑的显卡版本](../alt/1.png)  
+   ![电脑的显卡版本](../../alt/1.png)  
    如果已有显卡驱动，可以直接在桌面右键，找到英伟达驱动控制面板打开。  
-   ![英伟达驱动控制面板](../alt/2.png)  
+   ![英伟达驱动控制面板](../../alt/2.png)  
    显卡驱动的下载地址：[NVIDIA GeForce 驱动程序](https://www.nvidia.com/Download/index.aspx)  
-   ![NVIDIA GeForce 驱动程序下载地址](../alt/3.png)
+   ![NVIDIA GeForce 驱动程序下载地址](../../alt/3.png)
 
 2. **检查驱动版本**  
    安装（更新）好显卡驱动后，按下 `Win + R` 组合键，打开命令窗口，输入以下命令：
@@ -15,16 +15,16 @@
    nvidia-smi
    ```
    例如，可以看到驱动版本为 `555.99`，最高支持的 CUDA 版本为 `12.5`。  
-   ![nvidia-smi](../alt/4.png)
+   ![nvidia-smi](../../alt/4.png)
 
 ### 二、安装 CUDA 和 cuDNN
 1. **下载 CUDA Toolkit**  
    下载地址：[CUDA Toolkit 12.8 Update 1](https://developer.nvidia.com/cuda-downloads)  
-   ![CUDA Toolkit 下载](../alt/5.png)
+   ![CUDA Toolkit 下载](../../alt/5.png)
 
 2. **下载 cuDNN**  
    下载地址：[cuDNN 9.2.1](https://developer.nvidia.com/cudnn)  
-   ![cuDNN 下载](../alt/6.png)  
+   ![cuDNN 下载](../../alt/6.png)  
    将 zip 文件解压。
 
 ### 三、Anaconda 的安装
@@ -104,19 +104,19 @@
    安装的路径为"C:\Users\ASUS\anaconda3\Scripts\labelImg.exe"
 
    - **界面介绍**  
-     ![LabelImg 界面介绍](alt/labellmg1.png)
+     ![LabelImg 界面介绍](../../alt/labellmg1.png)
 
    - **设置（标签格式为 YOLO）**  
-     ![LabelImg 设置](../alt/labellmg2.png)
+     ![LabelImg 设置](../../alt/labellmg2.png)
 
    - **打开需要标注的图片文件夹，设置标注文件保存的目录 (Change Save Dir)**  
-     ![LabelImg 文件夹](../alt/labellmg3.png)
+     ![LabelImg 文件夹](../../alt/labellmg3.png)
 
    - **开始标注，画框，标记目标的 label**  
-     ![LabelImg 文件夹](../alt/labellmg4.png)
+     ![LabelImg 文件夹](../../alt/labellmg4.png)
 
    - **LabelImg 的快捷键**  
-     ![LabelImg 快捷键](../alt/labellmg5.png)
+     ![LabelImg 快捷键](../../alt/labellmg5.png)
 
 ### 七、项目克隆和环境依赖安装
 1. **YOLOv5 项目**  
