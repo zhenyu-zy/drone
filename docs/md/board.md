@@ -84,3 +84,15 @@
   ```bash
   sudo bash -c 'echo "/var/swapfile swap swap defaults 0 0" >> /etc/fstab'
   ```
+- 检查当前 Swap 状态：
+  ```bash
+  sudo swapon --show
+  ```
+- 停用 SWAP 文件：
+  ```bash
+  sudo swapoff -v /var/swapfile
+  ```
+- 删除 swapfile 文件：
+  ```bash
+  sudo rm /var/swapfile
+  ```
