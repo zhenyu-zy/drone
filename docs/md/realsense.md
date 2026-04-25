@@ -13,7 +13,7 @@ sudo make uninstall && make clean && make -j8 && sudo make install
 ### 二、安装（Jetson）
 
 ```bash
-sudo cp /home/nx/drone/doc/d435/libuvc_installation_jetson.sh /home/nx/libuvc_installation_jetson.sh
+sudo cp /home/nx/drone/docs/d435/libuvc_installation_jetson.sh /home/nx/libuvc_installation_jetson.sh
 sudo chmod +x ./libuvc_installation_jetson.sh
 ./libuvc_installation_jetson.sh
 sudo rm libuvc_installation_jetson.sh
@@ -22,7 +22,7 @@ sudo rm libuvc_installation_jetson.sh
 ### 三、安装（OrangePi5Max / RK3588）
 
 ```bash
-sudo cp /home/orangepi/drone/doc/d435/libuvc_installation_rk3588.sh /home/orangepi/libuvc_installation_rk3588.sh
+sudo cp /home/orangepi/drone/docs/d435/libuvc_installation_rk3588.sh /home/orangepi/libuvc_installation_rk3588.sh
 sudo chmod +x ./libuvc_installation_rk3588.sh
 ./libuvc_installation_rk3588.sh
 sudo rm libuvc_installation_rk3588.sh

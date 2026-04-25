@@ -21,7 +21,7 @@ sudo ./install_abseil.sh
 
 ## 二、工作空间编译
 
-### 正常编译
+### 正常编译(需先安装ceres-solver)
 ```bash
 catkin_make_isolated --install --use-ninja
 ```
