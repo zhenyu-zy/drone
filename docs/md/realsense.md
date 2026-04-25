@@ -40,7 +40,8 @@ realsense-viewer
 
 - 在已建立的 catkin 工作空间中安装：
   ```bash
-  cd src
+  mkdir realsense_ws/src
+  cd realsense_ws/src
   git clone -b ros1-legacy https://github.com/IntelRealSense/realsense-ros.git
   git clone https://github.com/pal-robotics/ddynamic_reconfigure.git
   cd ..
@@ -52,7 +53,7 @@ realsense-viewer
 
 - 添加环境变量：
   ```bash
-  echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc
+  echo "source ~/realsense_ws/devel/setup.bash --extend" >> ~/.bashrc
   source ~/.bashrc
   ```
 

@@ -42,4 +42,5 @@ git clone https://github.com/HViktorTsoi/rs_to_velodyne.git
 ```bash
 cd ~/rslidar_ws
 catkin_make
+echo "source ~/rslidar_ws/devel/setup.bash --extend" >> ~/.bashrc
 ```

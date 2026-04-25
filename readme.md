@@ -75,13 +75,17 @@
     - CMakeLists.txt 修改
     - ORB-SLAM3 编译
 
+13. [Cartographer 2D SLAM](docs/md/cartographer.md)
+    - Stow / Ninja / abseil-cpp 安装
+    - Cartographer 编译
+
 ### 依赖库
 
-13. [Sophus 李群库](docs/md/sophus.md)
+14. [Sophus 李群库](docs/md/sophus.md)
     - 编译安装 Sophus
 
 ### 自动驾驶
 
-14. [Autoware.ai](docs/md/autoware.md)
+15. [Autoware.ai](docs/md/autoware.md)
     - Docker 镜像构建与运行
     - ROS workspace 编译

@@ -79,6 +79,6 @@ cd ws_livox/src/livox_ros_driver2
 ### 五、配置环境变量
 
 ```bash
-echo 'source ~/ws_livox/devel/setup.bash' >> ~/.bashrc
+echo 'source ~/ws_livox/devel/setup.bash --extend' >> ~/.bashrc
 source ~/.bashrc
 ```

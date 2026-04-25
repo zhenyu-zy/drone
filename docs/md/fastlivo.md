@@ -24,6 +24,6 @@ catkin_make
 ### 四、配置环境变量
 
 ```bash
-echo 'source ~/ws_livox2/devel/setup.bash' >> ~/.bashrc
+echo 'source ~/ws_livox2/devel/setup.bash --extend' >> ~/.bashrc
 source ~/.bashrc
 ```
