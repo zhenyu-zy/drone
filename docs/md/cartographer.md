@@ -29,6 +29,4 @@ catkin_make_isolated --install --use-ninja
 ### 出现 Python 版本报错时编译
 ```bash
 catkin_make_isolated --install --use-ninja -DPYTHON_EXECUTABLE=/usr/bin/python3
-
-
-
+```
